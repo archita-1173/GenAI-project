@@ -1,8 +1,12 @@
 const express= require('express');
 const authRouter= require('./models/routes/auth.routes');
+const cookieParser= require("cookie-parser");
+
+
 
 const app= express();
 app.use(express.json());
+app.use(cookieParser());
 
 //routes
 app.use("/api/auth",authRouter);
