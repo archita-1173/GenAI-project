@@ -11,9 +11,14 @@ export const useAuth=()=>{
 
     const handleLogin=async({ email,password})=>{
         setLoading(true)
-        const data=await login({email,password}) // this is an api call
+        try{
+             const data=await login({email,password}) // this is an api call
         setUser(data.user)
-        setLoading(false)
+        }catch(err){
+          console.log(err)
+        }finally{setLoading(false)}
+       
+        
     }
 
     const handleRegister=async({username,email,password})=>{
